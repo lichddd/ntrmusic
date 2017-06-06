@@ -1,0 +1,72 @@
+*
+{
+
+box-sizing: border-box;
+
+
+}
+input:focus {
+    outline: none;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+
+}
+
+div {
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+}
+
+div>* {
+  -webkit-user-select: initial;
+  -moz-user-select: initial;
+  -ms-user-select: initial;
+  user-select: initial;
+}
+
+
+/*滚动条宽度*/
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+
+/* 轨道样式 */
+
+::-webkit-scrollbar-track {}
+
+
+/* Handle样式 */
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+
+/*当前窗口未激活的情况下*/
+
+::-webkit-scrollbar-thumb:window-inactive {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+
+/*hover到滚动条上*/
+
+::-webkit-scrollbar-thumb:vertical:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+
+/*滚动条按下*/
+
+::-webkit-scrollbar-thumb:vertical:active {
+  background-color: rgba(0, 0, 0, 0.7);
+}

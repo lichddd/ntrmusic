@@ -1,0 +1,15 @@
+.toast{
+		
+    border: 1px solid transparent;
+    border-radius: 5px;
+    font-size: 1em;    
+    color: #8a6d3b;
+    text-align: center;
+    cursor: inherit;
+    position: fixed;
+    left: 50%;
+    top: calc(50% - 100px);
+    padding: 10px;
+    background-color: #fcf8e3;
+    border-color: #faebcc;
+}

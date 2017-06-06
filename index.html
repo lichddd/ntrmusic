@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+    <!-- <meta name="viewport" content="width=750px, initial-scale=1, maximum-scale=1, user-scalable=no"> -->
+    <meta name="viewport" content="width=750, user-scalable=no">
+
+
+  <link rel="icon" href="static/ntr.png" type="image/x-icon" />
+  <link rel="shortcut icon" href="static/ntr.png">
+  <link rel="Bookmark" href="static/ntr.png">
+  <style>
+
+  html
+  {
+
+     transition: background-color 1s;
+  }
+  #appC
+  {
+
+     transition: opacity 1s;
+  }
+
+  </style>
+  <style id="loadingCSS">
+  html
+  {
+     background-color:#4fc08d;
+  }
+  #appC
+  {
+     opacity:0;
+  }
+
+    #loading {
+      width: 120px;
+      height: 50px;
+      margin: auto;
+      left: 0px;
+      right: 0px;
+      top: 0px;
+      bottom: 0px;
+      position: absolute;
+      text-align:center;
+      color: #eeeeee;
+      font-size: 16px;
+    }
+
+    .spinner {
+  /*margin: 100px auto;*/
+  width: 100%;
+  height: 60px;
+  text-align: center;
+  font-size: 10px;
+}
+
+.spinner > div {
+  background-color: #eeeeee;
+  height: 100%;
+  width: 6px;
+  display: inline-block;
+  margin-left: 2px;
+  margin-right: 2px;
+  -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
+  animation: stretchdelay 1.2s infinite ease-in-out;
+}
+
+.spinner .rect2 {
+  -webkit-animation-delay: -1.1s;
+  animation-delay: -1.1s;
+}
+
+.spinner .rect3 {
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+}
+
+.spinner .rect4 {
+  -webkit-animation-delay: -0.9s;
+  animation-delay: -0.9s;
+}
+
+.spinner .rect5 {
+  -webkit-animation-delay: -0.8s;
+  animation-delay: -0.8s;
+}
+
+@-webkit-keyframes stretchdelay {
+  0%, 40%, 100% { -webkit-transform: scaleY(0.4) }
+  20% { -webkit-transform: scaleY(1.0) }
+}
+
+@keyframes stretchdelay {
+  0%, 40%, 100% {
+    transform: scaleY(0.4);
+    -webkit-transform: scaleY(0.4);
+  }  20% {
+    transform: scaleY(1.0);
+    -webkit-transform: scaleY(1.0);
+  }
+}
+
+
+@media screen and (max-width: 750px){
+  #loading {
+    width: 240px;
+    height: 120px;
+
+    font-size: 32px;
+  }
+
+  .spinner {
+height: 120px;
+font-size: 20px;
+}
+
+.spinner > div {
+width: 12px;
+margin-left: 5px;
+margin-right: 5px;
+}
+}
+
+
+  </style>
+
+
+
+
+  <title>ntr音乐</title>
+</head>
+
+<body>
+  <div id="appC">
+  <div id="app"></div>
+</div>
+  <div id="loading">
+    <div class="spinner">
+      <div class="rect1"></div><div class="rect2"></div><div class="rect3"></div><div class="rect4"></div><div class="rect5"></div>
+    </div>
+    <div id="loadingStr">加载中...</div>
+  </div>
+
+  <!--[if lt IE 10]>
+  <p class="chromeframe" onclick="this.style.display='none'">您正在使用<strong>低版本浏览器</strong>，请<a
+          href="http://browsehappy.com/">升级到新版本浏览器</a>或者<a href="http://www.mychrome.cn/desktop/">下载谷歌浏览器</a>，以便页面能正确显示并提升您的浏览体验!360浏览器请切换至<span>极速模式 </span><a
+          title="关闭">&times;</a></p>
+  <![endif]-->
+</body>
+<script type="text/javascript" charset="utf-8">
+  window.loadingOBJ = {
+    csscount: <%=htmlWebpackPlugin.files.css.length%>,
+    jscount: <%=htmlWebpackPlugin.files.js.length%>,
+    count: 1,
+    nowcount:0
+  };
+  window.st=setInterval(function(){
+      if (window.loadingOBJ.nowcount<window.loadingOBJ.count) {
+          window.loadingOBJ.nowcount+=0.5;
+          document.getElementById("loadingStr").innerHTML = "加载中... " + window.loadingOBJ.nowcount.toFixed(1) + "%";
+      }
+
+
+  },200);
+
+</script>
+<script type="text/javascript" charset="utf-8">
+  window.loadingOBJ.nowcount=window.loadingOBJ.count;
+  window.loadingOBJ.count = 10;
+</script>
+<link rel="stylesheet" href="static/index.css" />
+
+
+<% for (var css in htmlWebpackPlugin.files.css) { %>
+  <script type="text/javascript" charset="utf-8">
+  window.loadingOBJ.nowcount=window.loadingOBJ.count;
+    window.loadingOBJ.count += (100 - 10-1) / (window.loadingOBJ.csscount + window.loadingOBJ.jscount);
+  </script>
+  <link href="<%=htmlWebpackPlugin.files.css[css] %>" rel="stylesheet">
+
+
+
+  <% } %>
+
+
+    <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+      <script type="text/javascript" charset="utf-8">
+      window.loadingOBJ.nowcount=window.loadingOBJ.count;
+        window.loadingOBJ.count += (100 - 10-1) / (window.loadingOBJ.csscount + window.loadingOBJ.jscount);
+      </script>
+      <script type="text/javascript" src="<%=htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
+
+
+      <% } %>
+        <script type="text/javascript" charset="utf-8">
+          delete window.loadingOBJ;
+          clearTimeout(window.st);
+          delete window.st;
+          document.getElementsByTagName("body")[0].removeChild(document.getElementById("loading"));
+          document.getElementsByTagName("head")[0].removeChild(document.getElementById("loadingCSS"));
+        </script>
+
+</html>
