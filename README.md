@@ -2,7 +2,7 @@
 
 > A NTR project
 
-## Build Setup
+### Build Setup
 
 ``` bash
 # install dependencies
@@ -14,14 +14,13 @@ npm run dev
 # build for production with minification
 npm run build
 
-# build for production and view the bundle analyzer report
-npm run build --report
+# serve dist for production with
+npm run server
 
-# run e2e tests
-npm run e2e
 
-# run all tests
-npm test
 ```
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+在线演示[ntr音乐](http://ntrmusic.duapp.com/)
+
+音乐数据api来自[网易云音乐 NodeJS 版 API](https://binaryify.github.io/NeteaseCloudMusicApi)
