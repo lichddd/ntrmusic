@@ -8,7 +8,9 @@ box-sizing: border-box;
 input:focus {
     outline: none;
 }
-
+button:focus{
+  outline:none;
+}
 body {
   margin: 0px;
   padding: 0px;
