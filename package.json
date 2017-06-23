@@ -4,11 +4,16 @@
   "description": "A NTR project",
   "author": "lichddd <lichddd@126.com>",
   "private": true,
+  "main": "main.js",
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
     "server": "node build/dist-server.js",
     "build": "node build/build.js",
+    "build:electron": "NODE_ELECTRON=true npm run build ",
+    "build:win": "npm run build:electron && electron-packager ./dist ntrmusic --platform=win32 --overwrite",
+    "build:mac": "npm run build:electron && electron-packager ./dist ntrmusic --platform=darwin --overwrite",
+    "build:asar": "npm run build:electron && asar pack ./dist app.asar",
     "e2e": "node test/e2e/runner.js",
     "test": "npm run e2e",
     "lint": "eslint --ext .js,.vue src test/e2e/specs",
@@ -68,7 +73,9 @@
     "webpack": "^2.2.1",
     "webpack-dev-middleware": "^1.10.0",
     "webpack-hot-middleware": "^2.16.1",
-    "webpack-merge": "^2.6.1"
+    "webpack-merge": "^2.6.1",
+    "electron": "~1.6.2",
+    "electron-packager": "^8.7.1"
   },
   "engines": {
     "node": ">= 4.0.0",

@@ -25,6 +25,13 @@ window.axios = axios;
 axios.interceptors.request.use(function(config) {
   // Do something before request is sent
   vm.progress.progressing.push({});
+
+  console.log(config);
+  if (navigator.userAgent.indexOf('Electron')>=0&&config&&config.url&&config.url.indexOf('music163')>=0) {
+    config.url=config.url.replace('music163','http://music.163.com');
+
+  }
+
   return config;
 }, function(error) {
   // Do something with request error

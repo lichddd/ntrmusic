@@ -33,3 +33,16 @@ rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
     ))
   })
 })
+
+
+
+if (process.env.NODE_ELECTRON==='true') {
+  var fs = require('fs');
+
+  function copy(src, dst) {
+      fs.writeFileSync(dst, fs.readFileSync(src));
+  }
+
+  copy("./electron-main.js","./dist/main.js");
+  copy("./package.json","./dist/package.json");
+}
