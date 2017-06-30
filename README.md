@@ -17,6 +17,14 @@ npm run build
 # serve dist for production with
 npm run server
 
+# build app for win
+npm run build:win
+
+# build app for mac
+npm run build:mac
+
+# build for electron
+npm run build:asar
 
 ```
 
