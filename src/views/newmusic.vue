@@ -19,9 +19,9 @@ v-on:mousemove="drag($event)">
                  'width':(ball.clipwidthheight-2)+'px',
                  'height':(ball.clipwidthheight-2)+'px',
                  'border-radius':((rotateYDeg($index,ball.clips.length)==90)||(rotateYDeg($index,ball.clips.length)==-90)?'100% !important':''),
-                 'transform':'rotateX('+rotateXDeg($index)+'deg) '
+                 'transform':'rotateY('+rotateXDeg($index)+'deg) '
 
-                 +'rotateY('+rotateYDeg($index,ball.clips.length)+'deg) '
+                 +'rotateX('+rotateYDeg($index,ball.clips.length)+'deg) '
                  +(rotateYDeg($index,ball.clips.length)>0?'rotateZ(180deg)':'')
                  +' translateZ('+(ballR+ball.hanasuR+b.hanasu)+'px)'
                  +' scale('+(b.hanasu/20+1)+')'
@@ -81,11 +81,11 @@ export default {
         rx: 0,
         ry: 0,
         rz: 0,
-        clipwidthheight: 50,
+        clipwidthheight: 30,
         hanasuR: 0,
         clips: []
       },
-      whRate:8,
+      whRate:4,
       preX:null,
       preY:null,
 

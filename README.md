@@ -29,6 +29,6 @@ npm run build:asar
 ```
 
 
-在线演示[ntr音乐](http://ntrmusic.duapp.com/)
+在线演示[ntr音乐](http://lichddd.bceapp.com/)
 
 音乐数据api来自[网易云音乐 NodeJS 版 API](https://binaryify.github.io/NeteaseCloudMusicApi)
